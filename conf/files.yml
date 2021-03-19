@@ -1,0 +1,5 @@
+general_files:
+  - url: http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/x86_64/alpine-standard-3.11.5-x86_64.iso
+    destination_file: alpine-standard-3.11.5-x86_64.iso
+    token: None
+    mount_iso_path: alpine-standard-3.11.5-x86_64

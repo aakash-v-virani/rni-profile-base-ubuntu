@@ -152,12 +152,6 @@ else
 	export param_release='dev'
 fi
 
-if [[ $param_release == 'prod' ]]; then
-	export kernel_params="$param_kernparam" # ipv6.disable=1
-else
-	export kernel_params="$param_kernparam"
-fi
-
 if [[ $kernel_params == *"docker_login_user="* ]]; then
 	tmp="${kernel_params##*docker_login_user=}"
 	export param_docker_login_user="${tmp%% *}"
@@ -167,6 +161,13 @@ if [[ $kernel_params == *"docker_login_pass="* ]]; then
 	tmp="${kernel_params##*docker_login_pass=}"
 	export param_docker_login_pass="${tmp%% *}"
 fi
+
+if [[ $param_release == 'prod' ]]; then
+	export kernel_params="$param_kernparam" # ipv6.disable=1
+else
+	export kernel_params="$param_kernparam"
+fi
+
 
 # --- Get free memory
 export freemem=$(grep MemTotal /proc/meminfo | awk '{print $2}')

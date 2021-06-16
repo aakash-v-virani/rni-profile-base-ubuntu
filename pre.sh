@@ -309,9 +309,11 @@ run "Configuring Image Database" \
 
 while (! docker ps > /dev/null ); do sleep 0.5; done
 
-run "Log in to a Docker registry" \
-    "docker login -u ${param_docker_login_user} -p ${param_docker_login_pass}" \
-    "$TMP/provisioning.log"
+if [ ! -z "${param_docker_login_pass}" ]; then
+    run "Log in to a Docker registry" \
+    	"docker login -u ${param_docker_login_user} -p ${param_docker_login_pass}" \
+    	"$TMP/provisioning.log"
+fi
 
 # --- Begin Ubuntu Install Process ---
 run "Preparing Ubuntu ${param_ubuntuversion} installer" \

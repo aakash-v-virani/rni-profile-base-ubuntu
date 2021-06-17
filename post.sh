@@ -8,7 +8,7 @@ source /opt/bootstrap/functions
 
 # --- Cleanup ---
 
-if [ ! -z "${param_docker_login_pass}" ]; then
+if [ ! -z "${param_docker_login_user}" ] && [ ! -z "${param_docker_login_pass}" ]; then
     run "Logout from a Docker registry" \
     "docker logout" \
     "$TMP/provisioning.log"
